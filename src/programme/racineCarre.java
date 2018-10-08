@@ -2,8 +2,8 @@ package programme;
 
 public class racineCarre {
 	
-	int tab[] ;
-	int a,b ; 
+	public int tab[] ;
+	public int a,b ; 
 	public racineCarre(int a , int b) {
 		
 		if ( a<b) {
