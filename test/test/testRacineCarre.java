@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import programme.racineCarre;
+
 /**
  * @author andrieut
  *
@@ -31,23 +33,50 @@ public class testRacineCarre {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void testParamsA_inf_B(){
+		try{
+			racineCarre rc = new racineCarre(11,8);
+		}catch(Exception e){
+			e.getMessage();
+		}		
 	}
-	
-	public boolean a_inf_b(int a, int b){
-		if(a < b){
-			return true;
-		}else return false;
+
+	@Test
+	public void tailleTableauPositif(){
+		int A = 1;
+		int B = 5;
+		//+2 car a et b compris dans le tableau
+		racineCarre rc = new racineCarre(A, B);
+		rc.racineCarre();
+		int tailleIdeal = (B-A) + 1;
+		assertTrue("Le tableau ne comprend pas [A..B] resultat", tailleIdeal == rc.tab.length);
 	}
-	
-	public boolean tailleTableau(int t[], int a, int b){
-		int taille = b-a;
-		if(t.length > taille){
-			return false;
-		}else return true;
+
+	@Test
+	public void tailleTableauNegatif(){
+		int A = -5;
+		int B = -1;
+		//+2 car a et b compris dans le tableau
+		racineCarre rc = new racineCarre(A, B);
+		rc.racineCarre();
+		int tailleIdeal = (Math.abs(B) - Math.abs(A)) + 1;
+		
+		assertTrue("Le tableau ne comprend pas [A..B] resultat", tailleIdeal == rc.tab.length);
+	}
+
+	@Test
+	public void tailleTableauWithZero(){
+		int A = -5;
+		int B = 5;
+		//+2 car a et b compris dans le tableau
+		racineCarre rc = new racineCarre(A, B);
+		rc.racineCarre();
+		int tailleIdeal = Math.abs(B-A) + 1;
+		assertTrue("Le tableau ne comprend pas [A..B] resultat", tailleIdeal == rc.tab.length);
 	}
 	
 	
 
 }
+
+	
